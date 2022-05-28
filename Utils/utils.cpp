@@ -26,3 +26,31 @@ void InitData(float *a, float *b, float *c, const size_t elementNum)
 		b[i] = rand() / (float)RAND_MAX;
 	}
 }
+
+void InitMatrixA(float *a, const size_t elementNum)
+{
+	for(size_t i=0; i<elementNum; i++)
+	{
+		a[i] = i + 1;
+	}
+}
+
+void InitMatrixB(float *b, const size_t elementNum)
+{
+	for(size_t i=0; i<elementNum; i++)
+	{
+		b[i] = i + 2;
+	}
+}
+
+void InitMatrixC(float *c, const size_t elementNum)
+{
+	memset((void*)c, 0, sizeof(float) * elementNum);
+}
+
+// Allocates a matrix with random float entries.
+void RandomInit(float *data, int size)
+{
+    for (int i = 0; i < size; ++i)
+        data[i] = rand() / (float)RAND_MAX;
+}
