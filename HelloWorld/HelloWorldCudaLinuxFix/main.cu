@@ -2,10 +2,16 @@
 
 #include <cuda_runtime.h>
 
-//Kernel definition
-__global__ void  HelloWorld()
+__device__ float DeviceFunction(int thIdx)
 {
-	printf("Hello World from thread %d\n", threadIdx.x);
+	printf("Hi from device function!\n");
+	return 0.1f * (thIdx + 1);
+}
+
+//Kernel definition
+__global__ void HelloWorld()
+{
+	printf("Hello World from thread %d\nNumber from device: %f\n", threadIdx.x, DeviceFunction(threadIdx.x));
 }
 
 int main()
