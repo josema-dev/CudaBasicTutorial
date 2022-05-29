@@ -14,3 +14,4 @@ endif()
 
 add_subdirectory(DotProductCuda)
 add_subdirectory(DotProductCudaDynamicShared)
+add_subdirectory(DotProductCudaOccupancy)

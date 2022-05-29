@@ -19,11 +19,14 @@ float CheckResults(const float *res_host, const float *res_dev, const size_t ele
 
 void InitData(float *a, float *b, float *c, const size_t elementNum)
 {
-	memset((void*)c, 0, sizeof(float) * elementNum);
+	if(c)
+		memset((void*)c, 0, sizeof(float) * elementNum);
 	for(size_t i=0; i<elementNum; i++)
 	{
-		a[i] = rand() / (float)RAND_MAX;
-		b[i] = rand() / (float)RAND_MAX;
+		if(a)
+			a[i] = rand() / (float)RAND_MAX;
+		if(b)
+			b[i] = rand() / (float)RAND_MAX;
 	}
 }
 
@@ -31,7 +34,7 @@ void InitMatrixA(float *a, const size_t elementNum)
 {
 	for(size_t i=0; i<elementNum; i++)
 	{
-		a[i] = i + 1;
+		a[i] = i + 1.0f;
 	}
 }
 
@@ -39,7 +42,7 @@ void InitMatrixB(float *b, const size_t elementNum)
 {
 	for(size_t i=0; i<elementNum; i++)
 	{
-		b[i] = i + 2;
+		b[i] = i + 2.0f;
 	}
 }
 
