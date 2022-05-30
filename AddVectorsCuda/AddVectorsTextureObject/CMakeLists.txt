@@ -6,7 +6,7 @@ set_property(TARGET ${TARGET}
 			 PROPERTY CUDA_SEPARABLE_COMPILATION ON)
 
 target_include_directories(${TARGET} PRIVATE ${CUDA_SAMPLES_INCLUDE} PRIVATE ${CMAKE_BINARY_DIR}/../../Utils)
-target_compile_options(${TARGET} PRIVATE "$<$<CONFIG:DEBUG>:-G>")
+target_compile_options(${TARGET} PRIVATE "$<$<AND:$<COMPILE_LANGUAGE:CUDA>,$<CONFIG:DEBUG>>:-G>")
 
 if(APPLE)
 	# We need to add the path to the driver (libcuda.dylib) as an rpath, 

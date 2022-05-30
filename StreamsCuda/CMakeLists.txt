@@ -17,7 +17,7 @@ else()
 endif()
 
 target_include_directories(${TARGET} PRIVATE ${CUDA_SAMPLES_INCLUDE} PRIVATE ${CMAKE_BINARY_DIR}/../../Utils)
-target_compile_options(${TARGET} PRIVATE "--ptxas-options=-v" PRIVATE "$<$<CONFIG:DEBUG>:-G>")
+target_compile_options(${TARGET} PRIVATE "$<$<COMPILE_LANGUAGE:CUDA>:--ptxas-options=-v>" PRIVATE "$<$<AND:$<COMPILE_LANGUAGE:CUDA>,$<CONFIG:DEBUG>>:-G>")
 
 if(APPLE)
 	# We need to add the path to the driver (libcuda.dylib) as an rpath, 

@@ -12,8 +12,8 @@ int main()
 {
 	float *c_host, *c_dev;
 	
-	float a = 1.2;
-	float b = 3.2;
+	float a = 1.2f;
+	float b = 3.2f;
 
 	//allocate data
 	c_host = (float*)malloc(sizeof(float));
@@ -22,6 +22,7 @@ int main()
 	//kernel lunch
 	Add<<<1,1>>>(a, b, c_dev);
 	
+	//copy data
 	cudaMemcpy(c_host, c_dev, sizeof(float), cudaMemcpyDeviceToHost);
 	
 	printf("%f + %f = %f\n", a, b, *c_host);

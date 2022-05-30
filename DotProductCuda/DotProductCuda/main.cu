@@ -88,7 +88,7 @@ int main()
 	float dot_host = DotHost(a_host, b_host, VECTOR_SIZE);
 
 	float c = 0;
- 	for (int i=0; i<blocks.x; i++) {
+ 	for (size_t i=0; i<blocks.x; i++) {
  		c += res_host[i];
  	}
 

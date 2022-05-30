@@ -53,7 +53,7 @@ int main()
 	for (int i = 0; i < STREAMS_NUM; i++)
 		checkCudaErrors(cudaStreamCreate(&streams[i]));
 	
-	checkCudaErrors(cudaEventRecord(start), 0);
+	checkCudaErrors(cudaEventRecord(start, 0));
 
 	for (int i = 0; i < STREAMS_NUM; i++)
 	{
@@ -88,7 +88,7 @@ int main()
 		checkCudaErrors(cudaFreeAsync(b_dev[i], streams[i]));
 		checkCudaErrors(cudaFreeAsync(c_dev[i], streams[i]));
 	}
-	checkCudaErrors(cudaEventRecord(stop), 0);
+	checkCudaErrors(cudaEventRecord(stop, 0));
 	checkCudaErrors(cudaEventSynchronize(stop));
 	float elapsedTime = 0.0f;
 	checkCudaErrors(cudaEventElapsedTime(&elapsedTime, start, stop));
